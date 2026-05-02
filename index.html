@@ -23,8 +23,9 @@ background: linear-gradient(90deg, #8B1A1A, #5C3317, #8B1A1A);
 
 .hero {
 text-align: center;
-padding: 52px 24px 40px;
+padding: 48px 24px 36px;
 border-bottom: 1px solid #D4B896;
+margin-bottom: 36px;
 }
 
 .eyebrow {
@@ -33,75 +34,71 @@ letter-spacing: 0.25em;
 text-transform: uppercase;
 color: #8B1A1A;
 display: block;
-margin-bottom: 16px;
+margin-bottom: 14px;
 }
 
 h1 {
-font-size: 38px;
-line-height: 1.15;
+font-size: 34px;
+line-height: 1.2;
 color: #2C1A0E;
 font-weight: 700;
-margin-bottom: 14px;
+margin-bottom: 12px;
 }
 
 .hero-sub {
 font-style: italic;
 font-size: 16px;
 color: #8C7055;
-margin-bottom: 28px;
+margin-bottom: 24px;
 }
 
-.divider {
+.hero-divider {
 color: #D4B896;
-font-size: 16px;
+font-size: 14px;
 letter-spacing: 10px;
 }
 
-/* Recipe grid */
-.grid-section {
-padding: 36px 20px 60px;
-max-width: 900px;
-margin: 0 auto;
+/* Sections */
+.section {
+padding: 0 20px 40px;
 }
 
-.section-label {
+.section-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 16px;
+}
+
+.section-title {
 font-size: 10px;
 letter-spacing: 0.22em;
 text-transform: uppercase;
 color: #8B1A1A;
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 12px;
+white-space: nowrap;
+flex-shrink: 0;
 }
 
-.section-label::after {
-content: ‘’;
+.section-rule {
 flex: 1;
 height: 1px;
 background: #D4B896;
 }
 
-.recipe-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-gap: 16px;
-}
-
+/* Cards */
 .recipe-card {
 display: block;
 text-decoration: none;
 background: #EDE4D0;
 border: 1px solid #D4B896;
 border-radius: 12px;
-padding: 22px 20px;
-transition: transform 0.15s ease, box-shadow 0.15s ease;
+padding: 20px 18px 18px;
+margin-bottom: 14px;
 position: relative;
 overflow: hidden;
 }
 
-.recipe-card::before {
-content: ‘’;
+.card-stripe {
 position: absolute;
 top: 0; left: 0; right: 0;
 height: 3px;
@@ -109,56 +106,48 @@ background: linear-gradient(90deg, #8B1A1A, #5C3317);
 border-radius: 12px 12px 0 0;
 }
 
-.recipe-card:active {
-transform: scale(0.98);
-box-shadow: 0 2px 12px rgba(92,51,23,0.15);
-}
-
 .card-tag {
 font-size: 10px;
-letter-spacing: 0.15em;
+letter-spacing: 0.14em;
 text-transform: uppercase;
 color: #8B1A1A;
-margin-bottom: 8px;
+margin-bottom: 7px;
 display: block;
 }
 
 .card-title {
-font-size: 20px;
+font-size: 22px;
 font-weight: 700;
 color: #2C1A0E;
 line-height: 1.2;
 margin-bottom: 8px;
+padding-right: 28px;
 }
 
 .card-desc {
 font-size: 14px;
 font-style: italic;
 color: #8C7055;
-line-height: 1.5;
+line-height: 1.55;
 margin-bottom: 16px;
 }
 
 .card-meta {
 display: flex;
-gap: 16px;
+gap: 20px;
 }
 
-.card-meta-item {
-display: flex;
-flex-direction: column;
-gap: 1px;
-}
-
-.card-meta-label {
+.meta-label {
 font-size: 9px;
 letter-spacing: 0.12em;
 text-transform: uppercase;
 color: #B09070;
+display: block;
+margin-bottom: 2px;
 }
 
-.card-meta-value {
-font-size: 13px;
+.meta-value {
+font-size: 14px;
 font-weight: 700;
 color: #5C3317;
 }
@@ -166,24 +155,9 @@ color: #5C3317;
 .card-arrow {
 position: absolute;
 bottom: 20px;
-right: 20px;
-font-size: 20px;
+right: 18px;
+font-size: 18px;
 color: #D4B896;
-}
-
-/* Coming soon card */
-.recipe-card.coming-soon {
-opacity: 0.5;
-pointer-events: none;
-border-style: dashed;
-}
-
-.recipe-card.coming-soon::before {
-background: #D4B896;
-}
-
-.recipe-card.coming-soon .card-tag {
-color: #B09070;
 }
 
 .footer {
@@ -193,6 +167,7 @@ border-top: 1px solid #D4B896;
 font-size: 11px;
 color: #D4B896;
 letter-spacing: 0.1em;
+margin-top: 10px;
 }
 </style>
 
@@ -205,74 +180,65 @@ letter-spacing: 0.1em;
   <span class="eyebrow">Houston, TX</span>
   <h1>The Official Westie Bestie<br>Cookbook</h1>
   <p class="hero-sub">Recipes worth making twice</p>
-  <span class="divider">&#8212; &#8212; &#8212;</span>
+  <span class="hero-divider">&#8212; &#8212; &#8212;</span>
 </div>
 
-<div class="grid-section">
-  <div class="section-label">Pasta</div>
-  <div class="recipe-grid">
+<div class="section">
 
-```
-<!-- Paulie's Bolognese -->
-<a class="recipe-card" href="Bolognese.html">
-  <span class="card-tag">Italian &bull; Beef &bull; Healthy Option</span>
-  <div class="card-title">Paulie's-Style Rigatoni Bolognese</div>
-  <p class="card-desc">A faithful recreation of the Montrose classic — beef & veal in a light, creamy tomato sauce.</p>
-  <div class="card-meta">
-    <div class="card-meta-item">
-      <span class="card-meta-label">Time</span>
-      <span class="card-meta-value">2.5 hrs</span>
-    </div>
-    <div class="card-meta-item">
-      <span class="card-meta-label">Serves</span>
-      <span class="card-meta-value">4</span>
-    </div>
-    <div class="card-meta-item">
-      <span class="card-meta-label">Difficulty</span>
-      <span class="card-meta-value">Medium</span>
-    </div>
-  </div>
-  <span class="card-arrow">&#8594;</span>
-</a>
-```
-
+  <div class="section-header">
+    <span class="section-title">Pasta</span>
+    <div class="section-rule"></div>
   </div>
 
-  <div class="section-label" style="margin-top:32px;">Chicken</div>
-  <div class="recipe-grid">
+  <a class="recipe-card" href="Bolognese.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Italian &bull; Beef &bull; Healthy Option</span>
+    <div class="card-title">Paulie's-Style Rigatoni Bolognese</div>
+    <p class="card-desc">A faithful recreation of the Montrose classic — beef & veal in a light, creamy tomato sauce.</p>
+    <div class="card-meta">
+      <div>
+        <span class="meta-label">Time</span>
+        <span class="meta-value">2.5 hrs</span>
+      </div>
+      <div>
+        <span class="meta-label">Serves</span>
+        <span class="meta-value">4</span>
+      </div>
+      <div>
+        <span class="meta-label">Difficulty</span>
+        <span class="meta-value">Medium</span>
+      </div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
 
-```
-<!-- Korean Fried Chicken -->
-<a class="recipe-card" href="KFC.html">
-  <span class="card-tag">Korean &bull; Fried &bull; Spicy</span>
-  <div class="card-title">The Best Korean Fried Chicken at Home</div>
-  <p class="card-desc">Double-fried for maximum crunch, glazed in a sticky gochujang sauce. Joshua Weissman's recipe.</p>
-  <div class="card-meta">
-    <div class="card-meta-item">
-      <span class="card-meta-label">Time</span>
-      <span class="card-meta-value">1.5 hrs</span>
-    </div>
-    <div class="card-meta-item">
-      <span class="card-meta-label">Serves</span>
-      <span class="card-meta-value">4</span>
-    </div>
-    <div class="card-meta-item">
-      <span class="card-meta-label">Difficulty</span>
-      <span class="card-meta-value">Medium</span>
-    </div>
+  <div class="section-header" style="margin-top: 28px;">
+    <span class="section-title">Chicken</span>
+    <div class="section-rule"></div>
   </div>
-  <span class="card-arrow">&#8594;</span>
-</a>
 
-<!-- Placeholder -->
-<div class="recipe-card coming-soon">
-  <span class="card-tag">Coming Soon</span>
-  <div class="card-title">Your Next Recipe</div>
-  <p class="card-desc">Add your next chicken recipe here.</p>
-</div>
-```
+  <a class="recipe-card" href="KFC.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Korean &bull; Fried &bull; Spicy</span>
+    <div class="card-title">The Best Korean Fried Chicken at Home</div>
+    <p class="card-desc">Double-fried for maximum crunch, glazed in a sticky gochujang sauce. Joshua Weissman's recipe.</p>
+    <div class="card-meta">
+      <div>
+        <span class="meta-label">Time</span>
+        <span class="meta-value">1.5 hrs</span>
+      </div>
+      <div>
+        <span class="meta-label">Serves</span>
+        <span class="meta-value">4</span>
+      </div>
+      <div>
+        <span class="meta-label">Difficulty</span>
+        <span class="meta-value">Medium</span>
+      </div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
 
-  </div>
 </div>
 
 <div class="footer">The Official Westie Bestie Cookbook &nbsp;&#183;&nbsp; Houston, TX</div>
