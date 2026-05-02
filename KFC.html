@@ -188,6 +188,17 @@ text-transform: uppercase;
 color: var(–muted);
 display: block;
 }
+.serves-macros {
+font-size: 10px;
+color: #8C7055;
+-webkit-text-fill-color: #8C7055;
+font-style: italic;
+letter-spacing: 0;
+text-transform: none;
+display: block;
+margin-top: 5px;
+line-height: 1.5;
+}
 .circle-btn {
 width: 36px;
 height: 36px;
@@ -461,6 +472,7 @@ h1 { font-size: 32px; }
         <span class="serves-sup">Serves</span>
         <span class="serves-num" id="servings-display">4</span>
         <span class="serves-sub">people</span>
+        <span class="serves-macros" id="macro-line">~580 cal · 42g protein · 38g carbs · 28g fat</span>
       </div>
       <button class="circle-btn" id="btn-up">+</button>
     </div>
@@ -478,11 +490,11 @@ h1 { font-size: 32px; }
   <div class="mode-tiles">
     <button class="mode-tile active" id="btn-tenders">
       <span class="mode-tile-name">Tenders</span>
-      <span class="mode-tile-desc">Boneless breast strips, crispy &amp; sauceable</span>
+      <span class="mode-tile-desc">Boneless breast strips, crispy &amp; sauceable<br>~580 cal · 42g protein · 38g carbs · 28g fat</span>
     </button>
     <button class="mode-tile" id="btn-wings">
       <span class="mode-tile-name">Bone-In Wings</span>
-      <span class="mode-tile-desc">Whole drums &amp; flats, traditional KFC style</span>
+      <span class="mode-tile-desc">Whole drums &amp; flats, traditional KFC style<br>~620 cal · 38g protein · 36g carbs · 32g fat</span>
     </button>
   </div>
 </div>
@@ -685,6 +697,8 @@ h1 { font-size: 32px; }
     <p><strong>Overnight marinade:</strong> One hour works fine, but overnight transforms the flavor and keeps the meat juicy through the high-heat fry.</p>
     <p><strong>Crispy bits trick:</strong> Drizzling wet batter into the dry dredge before coating creates extra craggy texture — don't skip this step.</p>
     <p><strong>Sauce timing:</strong> Toss in sauce right before serving. Hold unsauced chicken on the rack if needed and sauce to order.</p>
+    <p><strong>Switch up the sauce:</strong> The double-fried crust pairs well with any sauce — try buffalo, honey garlic, teriyaki, or a simple lemon-pepper butter. Just toss and serve the same way.</p>
+    <p><strong>Serve with rice:</strong> Steamed jasmine or short-grain rice is the natural pairing — it soaks up the glaze beautifully. A simple cucumber salad or quick-pickled daikon alongside cuts through the richness.</p>
   </div>
 </div>
 
@@ -714,6 +728,7 @@ h1 { font-size: 32px; }
     document.getElementById('btn-tenders').classList.add('active');
     document.getElementById('btn-wings').classList.remove('active');
     document.getElementById('meta-total').textContent = '~45 min';
+    document.getElementById('macro-line').textContent = '~580 cal · 42g protein · 38g carbs · 28g fat';
   };
 
   document.getElementById('btn-wings').onclick = function() {
@@ -721,6 +736,7 @@ h1 { font-size: 32px; }
     document.getElementById('btn-wings').classList.add('active');
     document.getElementById('btn-tenders').classList.remove('active');
     document.getElementById('meta-total').textContent = '~50 min';
+    document.getElementById('macro-line').textContent = '~620 cal · 38g protein · 36g carbs · 32g fat';
   };
 
   function render() {
