@@ -3,290 +3,351 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="color-scheme" content="light only">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Thai Lettuce Wraps</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  html { color-scheme: light only; background-color: #1a2e25; }
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
-  body {
-    background-color: #1a2e25;
-    font-family: 'Lora', Georgia, 'Times New Roman', serif;
-    color: #1C1209;
-    min-height: 100vh;
-    padding: 32px 16px 64px;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #F4EFE4;
-    color: #1C1209;
-    box-shadow: 0 0 0 1px #A3845A, 0 0 0 6px #1a2e25, 0 0 0 7px #A3845A, 0 24px 80px rgba(0,0,0,0.6);
-    padding: 48px 40px 56px;
-    position: relative;
-    border-radius: 2px;
-  }
-  .page::before {
-    content:'';
-    position:absolute; top:0; left:0; right:0; height:5px;
-    background: linear-gradient(90deg, #1B4332 0%, #2D6A4F 30%, #A3845A 50%, #2D6A4F 70%, #1B4332 100%);
-    border-radius: 2px 2px 0 0;
-  }
-  .content { position:relative; z-index:1; background-color:#F4EFE4; color:#1C1209; }
-
-/* ── Typography ── */
-.kicker { font-family:‘Lora’,Georgia,serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#2D6A4F; font-weight:600; margin-bottom:10px; display:block; }
-h1 { font-family:‘Playfair Display’,Georgia,‘Times New Roman’,serif; font-size:clamp(28px,6vw,48px); font-weight:700; line-height:1.05; color:#1C1209; margin-bottom:6px; }
-.subtitle { font-family:‘Playfair Display’,Georgia,serif; font-style:italic; font-size:15px; color:#7A6A52; margin-bottom:20px; display:block; }
-
-/* ── Meta bar ── */
-.meta-bar { display:-webkit-flex; display:flex; -webkit-flex-wrap:wrap; flex-wrap:wrap; gap:24px; padding:14px 0; border-top:1px solid #D9C9A8; border-bottom:1px solid #D9C9A8; margin-bottom:36px; background-color:#F4EFE4; }
-.meta-item { display:-webkit-flex; display:flex; -webkit-flex-direction:column; flex-direction:column; gap:3px; }
-.meta-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#7A6A52; font-weight:600; font-family:‘Lora’,Georgia,serif; }
-.meta-value { font-size:15px; font-weight:600; color:#1C1209; font-family:‘Lora’,Georgia,serif; }
-.servings-control { display:-webkit-inline-flex; display:inline-flex; -webkit-align-items:center; align-items:center; gap:10px; }
-.servings-control button { width:28px; height:28px; border:1.5px solid #A3845A; background-color:transparent; border-radius:50%; font-size:18px; line-height:1; color:#2D6A4F; cursor:pointer; display:-webkit-inline-flex; display:inline-flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center; -webkit-appearance:none; appearance:none; font-family:Georgia,serif; padding:0; touch-action:manipulation; }
-.servings-control button:active { background-color:#E8D5A3; }
-#serving-count { font-size:16px; font-weight:700; min-width:22px; text-align:center; color:#1C1209; font-family:‘Lora’,Georgia,serif; display:inline-block; }
-
-/* ── Main recipe grid ── */
-.body-grid { display:-webkit-flex; display:flex; gap:40px; }
-.ingredients-col { -webkit-flex:0 0 210px; flex:0 0 210px; }
-.steps-col { -webkit-flex:1 1 0; flex:1 1 0; min-width:0; }
-
-/* ── Section titles ── */
-.section-title { font-family:‘Playfair Display’,Georgia,serif; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:#2D6A4F; font-weight:700; margin-bottom:14px; padding-bottom:7px; border-bottom:2px solid #2D6A4F; display:block; }
-
-/* ── Ingredients list ── */
-.ing-list { list-style:none; padding:0; margin:0; }
-.ing-list li { display:-webkit-flex; display:flex; gap:10px; padding:7px 0; border-bottom:1px solid #D9C9A8; font-size:13px; line-height:1.4; color:#1C1209; background-color:#F4EFE4; }
-.ing-list li:last-child { border-bottom:none; }
-.ing-amount { -webkit-flex-shrink:0; flex-shrink:0; width:60px; font-weight:600; color:#2D6A4F; font-size:13px; font-family:‘Lora’,Georgia,serif; }
-.ing-name { color:#1C1209; font-family:‘Lora’,Georgia,serif; }
-.ing-optional { color:#7A6A52; font-style:italic; }
-
-/* ── Steps ── */
-.steps-list { list-style:none; padding:0; margin:0; }
-.step { display:-webkit-flex; display:flex; gap:16px; margin-bottom:20px; }
-.step-num { -webkit-flex-shrink:0; flex-shrink:0; width:26px; height:26px; background-color:#2D6A4F; color:#ffffff; border-radius:50%; display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center; font-size:12px; font-weight:700; font-family:‘Playfair Display’,Georgia,serif; margin-top:2px; line-height:1; }
-.step-text { font-size:14px; line-height:1.75; color:#1C1209; font-family:‘Lora’,Georgia,serif; }
-
-/* ── Notes ── */
-.notes { margin-top:24px; padding:14px 18px; background-color:#eaf2ed; border-left:3px solid #2D6A4F; border-radius:2px; }
-.notes-title { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#2D6A4F; font-weight:700; margin-bottom:8px; font-family:‘Lora’,Georgia,serif; display:block; }
-.notes p { font-size:13px; line-height:1.6; color:#4a6155; font-family:‘Lora’,Georgia,serif; }
-.notes p + p { margin-top:5px; }
-
-/* ── Sub-recipe sections ── */
-.sub-section {
-margin-top: 40px;
-padding-top: 32px;
-border-top: 1px solid #D9C9A8;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #F2EBD9;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  color: #2C1A0E;
+  padding: 0 20px 60px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-.sub-header {
-display: -webkit-flex;
-display: flex;
--webkit-align-items: baseline;
-align-items: baseline;
-gap: 12px;
-margin-bottom: 18px;
+.topbar {
+  height: 6px;
+  background: linear-gradient(90deg, #1B4332, #2D6A4F, #1B4332);
+  margin: 0 -20px 36px;
+}
+.header {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #D4B896;
+  margin-bottom: 24px;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2D6A4F;
+  margin-bottom: 10px;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+h1 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 7vw, 40px);
+  line-height: 1.15;
+  color: #2C1A0E;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-style: italic;
+  font-size: 16px;
+  color: #8C7055;
+  margin-bottom: 20px;
+  font-family: 'Lora', Georgia, serif;
+}
+.divider {
+  color: #D4B896;
+  font-size: 18px;
+  letter-spacing: 8px;
+  margin-bottom: 18px;
+  display: block;
+}
+.meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.meta-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8C7055;
+  font-family: 'Lora', Georgia, serif;
+}
+.meta-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1B4332;
+  font-family: 'Lora', Georgia, serif;
+}
+.meta-divider {
+  width: 1px;
+  height: 28px;
+  background: #D4B896;
+}
+.serving-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid #2D6A4F;
+  background: #F2EBD9;
+  font-size: 20px;
+  color: #2D6A4F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1;
+  padding: 0;
+  font-family: Georgia, serif;
+  touch-action: manipulation;
+}
+.btn:active {
+  background: #2D6A4F;
+  color: #F2EBD9;
+}
+#serving-count {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2D6A4F;
+  min-width: 36px;
+  text-align: center;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2D6A4F;
+  margin-bottom: 14px;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lora', Georgia, serif;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #D4B896;
+}
+.ing-group-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #A3845A;
+  margin: 14px 0 6px;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+.ing-group-label:first-child { margin-top: 0; }
+.ingredients {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.ingredients li {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(212,184,150,0.35);
+  font-size: 15px;
+  line-height: 1.4;
+  color: #2C1A0E;
+}
+.ingredients li:last-child { border-bottom: none; }
+.amt {
+  font-weight: 700;
+  color: #2D6A4F;
+  min-width: 60px;
+  flex-shrink: 0;
+  font-family: 'Lora', Georgia, serif;
+}
+.ing-optional { color: #8C7055; font-style: italic; }
+.steps { list-style: none; margin-bottom: 8px; }
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.step-n {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2D6A4F;
+  opacity: 0.6;
+  min-width: 22px;
+  padding-top: 1px;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.step-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Lora', Georgia, serif;
+}
+.step-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #2C1A0E;
+  font-family: 'Lora', Georgia, serif;
+}
+.notes { margin-bottom: 8px; }
+.note {
+  border-left: 2px solid #D4B896;
+  padding-left: 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #8C7055;
+  font-family: 'Lora', Georgia, serif;
+}
+.note strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1B4332;
+  margin-bottom: 3px;
+  font-family: 'Lora', Georgia, serif;
+}
+/* Sub-recipe sections */
+.sub-section {
+  margin-top: 8px;
+  padding-top: 4px;
 }
 .sub-title {
-font-family: ‘Playfair Display’, Georgia, serif;
-font-size: 20px;
-font-weight: 700;
-color: #1C1209;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C1A0E;
+  margin-bottom: 2px;
 }
 .sub-yield {
-font-family: ‘Lora’, Georgia, serif;
-font-size: 12px;
-color: #7A6A52;
-font-style: italic;
+  font-size: 12px;
+  color: #8C7055;
+  font-style: italic;
+  font-family: 'Lora', Georgia, serif;
+  margin-bottom: 12px;
+  display: block;
 }
-.sub-grid {
-display: -webkit-flex;
-display: flex;
-gap: 32px;
-}
-.sub-ing-col {
--webkit-flex: 0 0 180px;
-flex: 0 0 180px;
-}
-.sub-steps-col {
--webkit-flex: 1 1 0;
-flex: 1 1 0;
-min-width: 0;
-}
-.sub-section-label {
-font-family: ‘Lora’, Georgia, serif;
-font-size: 10px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: #A3845A;
-font-weight: 600;
-margin-bottom: 12px;
-padding-bottom: 6px;
-border-bottom: 1px solid #D9C9A8;
-display: block;
-}
-.sub-step { display:-webkit-flex; display:flex; gap:12px; margin-bottom:14px; }
-.sub-step-num { -webkit-flex-shrink:0; flex-shrink:0; width:22px; height:22px; background-color:#A3845A; color:#ffffff; border-radius:50%; display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center; font-size:11px; font-weight:700; margin-top:2px; line-height:1; }
-.sub-step-text { font-size:13px; line-height:1.7; color:#1C1209; font-family:‘Lora’,Georgia,serif; }
-
-/* ── Footer ── */
-.footer { margin-top:40px; padding-top:18px; border-top:1px solid #D9C9A8; text-align:center; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#7A6A52; font-family:‘Lora’,Georgia,serif; background-color:#F4EFE4; }
-
-/* ── Mobile ── */
-@media (max-width:580px) {
-.page { padding:40px 20px 48px; }
-.body-grid, .sub-grid { -webkit-flex-direction:column; flex-direction:column; gap:28px; }
-.ingredients-col, .sub-ing-col { -webkit-flex:none; flex:none; width:100%; }
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #D4B896;
+  font-size: 11px;
+  color: #D4B896;
+  letter-spacing: 0.1em;
+  font-family: 'Lora', Georgia, serif;
 }
 </style>
-
 </head>
 <body>
-<div class="page">
-  <div class="content">
-    <span class="kicker">Restaurant Dropout &middot; Week 109</span>
-    <h1>Thai Lettuce Wraps</h1>
-    <span class="subtitle">with chili crunch chicken &amp; two dipping sauces</span>
+<div class="topbar"></div>
 
-```
-<div class="meta-bar">
-  <div class="meta-item">
-    <span class="meta-label">Total Time</span>
-    <span class="meta-value">30 min</span>
-  </div>
-  <div class="meta-item">
-    <span class="meta-label">Servings</span>
-    <div class="servings-control">
-      <button id="btn-down" aria-label="Decrease servings">&#8722;</button>
-      <span id="serving-count">2</span>
-      <button id="btn-up" aria-label="Increase servings">&#43;</button>
-    </div>
-  </div>
-</div>
-
-<div class="body-grid">
-  <div class="ingredients-col">
-    <span class="section-title">Ingredients</span>
-    <ul class="ing-list" id="main-ings"></ul>
-  </div>
-  <div class="steps-col">
-    <span class="section-title">Instructions</span>
-    <ol class="steps-list" id="main-steps"><li class="step"><div class="step-num">1</div><div class="step-text">Prepare the Chili Crunch Chicken, Peanut Sauce, and Serrano Garlic Sauce using the recipes below.</div></li>
-```
-
-<li class="step"><div class="step-num">2</div><div class="step-text">Heat neutral oil in a large skillet over high heat. Add the Chili Crunch Chicken and cook, stirring occasionally, until hot and slightly caramelized around the edges, about 4 minutes.</div></li>
-<li class="step"><div class="step-num">3</div><div class="step-text">Divide the Serrano Garlic Sauce between two ramekins and garnish each with 2&ndash;3 slices of serrano. Whisk the Peanut Sauce with the warm water until smooth, divide between two ramekins, and garnish with half the chopped peanuts.</div></li>
-<li class="step"><div class="step-num">4</div><div class="step-text">Arrange the butter lettuce, carrots, cucumber, cilantro, and scallions on two plates. Arrange the chicken alongside and garnish with the remaining peanuts. Serve with both dipping sauces.</div></li></ol>
-        <div class="notes"><span class="notes-title">Notes</span><p>Spoon the chicken into a lettuce leaf, top with vegetables, peanuts, and sauces to eat.</p>
-<p>For a more filling meal, serve with Coconut Rice on the side (recipe below).</p></div>
+<div class="header">
+  <span class="eyebrow">Restaurant Dropout &middot; Week 109</span>
+  <h1>Thai Lettuce Wraps</h1>
+  <p class="subtitle">with chili crunch chicken &amp; two dipping sauces</p>
+  <span class="divider">&#8212; &nbsp; &#8212; &nbsp; &#8212;</span>
+  <div class="meta-bar">
+    <div class="meta-item">
+      <span class="meta-label">Serves</span>
+      <div class="serving-row">
+        <button class="btn" id="btn-down" aria-label="decrease">&#8722;</button>
+        <span id="serving-count">2</span>
+        <button class="btn" id="btn-up" aria-label="increase">&#43;</button>
       </div>
+      <span class="meta-label">people</span>
     </div>
-
-```
-<div class="sub-section">
-```
-
-  <div class="sub-header">
-    <span class="sub-title">Chili Crunch Chicken</span>
-    <span class="sub-yield">makes 2 cups</span>
-  </div>
-  <div class="sub-grid">
-    <div class="sub-ing-col">
-      <span class="sub-section-label">Ingredients</span>
-      <ul style="list-style:none;padding:0;margin:0;"><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1 lb</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">ground chicken</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#189;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">shallot, minced</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 cloves</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">garlic, minced</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">&frac12;-inch knob ginger, minced</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#189; bunch</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">scallion whites, thinly sliced</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">oyster sauce</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1&#189; tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">soy sauce</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#189; tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">toasted sesame oil</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">chili crunch</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">neutral oil, for cooking</span></li></ul>
+    <div class="meta-divider"></div>
+    <div class="meta-item">
+      <span class="meta-label">Time</span>
+      <span class="meta-value">30 min</span>
     </div>
-    <div class="sub-steps-col">
-      <span class="sub-section-label">Instructions</span>
-      <ol style="list-style:none;padding:0;margin:0;"><li class="sub-step"><div class="sub-step-num">1</div><div class="sub-step-text">In a medium bowl, combine all ingredients and mix until smooth.</div></li><li class="sub-step"><div class="sub-step-num">2</div><div class="sub-step-text">Heat neutral oil in a large skillet over medium-high heat. Add the chicken mixture and cook, undisturbed, for 4&ndash;5 minutes until caramelized around the edges. Break up the meat with a spatula, scraping the bottom of the pan, and cook until thoroughly done, another 5&ndash;6 minutes.</div></li></ol>
-      <p style="margin-top:10px;font-size:12px;font-style:italic;color:#7A6A52;font-family:Lora,Georgia,serif;">Cool completely before storing in an airtight container. Reheat in a hot skillet.</p>
-    </div>
-  </div>
-</div><div class="sub-section">
-  <div class="sub-header">
-    <span class="sub-title">Peanut Sauce</span>
-    <span class="sub-yield">makes &frac14; cup</span>
-  </div>
-  <div class="sub-grid">
-    <div class="sub-ing-col">
-      <span class="sub-section-label">Ingredients</span>
-      <ul style="list-style:none;padding:0;margin:0;"><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">salted peanut butter</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1&#189; tsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">brown sugar</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1&#189; tsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">soy sauce</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#188; tsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">toasted sesame oil</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">juice of &frac14; lime</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1 clove</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">garlic, grated</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">small knob of ginger, grated</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">hot water</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">pinch of kosher salt</span></li></ul>
-    </div>
-    <div class="sub-steps-col">
-      <span class="sub-section-label">Instructions</span>
-      <ol style="list-style:none;padding:0;margin:0;"><li class="sub-step"><div class="sub-step-num">1</div><div class="sub-step-text">Add all ingredients to a small bowl and whisk until thoroughly combined.</div></li></ol>
-      <p style="margin-top:10px;font-size:12px;font-style:italic;color:#7A6A52;font-family:Lora,Georgia,serif;">Store in an airtight container in the refrigerator for up to 5 days.</p>
-    </div>
-  </div>
-</div><div class="sub-section">
-  <div class="sub-header">
-    <span class="sub-title">Serrano Garlic Sauce</span>
-    <span class="sub-yield">makes ~&frac13; cup</span>
-  </div>
-  <div class="sub-grid">
-    <div class="sub-ing-col">
-      <span class="sub-section-label">Ingredients</span>
-      <ul style="list-style:none;padding:0;margin:0;"><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&mdash;</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">juice of 2 limes</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">3 cloves</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">garlic</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">1</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">serrano pepper, roughly chopped</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">fish sauce</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">2 tbsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">brown sugar</span></li></ul>
-    </div>
-    <div class="sub-steps-col">
-      <span class="sub-section-label">Instructions</span>
-      <ol style="list-style:none;padding:0;margin:0;"><li class="sub-step"><div class="sub-step-num">1</div><div class="sub-step-text">Using a blender or immersion blender, blend all ingredients until mostly smooth.</div></li></ol>
-      <p style="margin-top:10px;font-size:12px;font-style:italic;color:#7A6A52;font-family:Lora,Georgia,serif;">Store in an airtight container in the refrigerator.</p>
-    </div>
-  </div>
-</div><div class="sub-section">
-  <div class="sub-header">
-    <span class="sub-title">Coconut Rice</span>
-    <span class="sub-yield">makes ~1 cup &mdash; optional</span>
-  </div>
-  <div class="sub-grid">
-    <div class="sub-ing-col">
-      <span class="sub-section-label">Ingredients</span>
-      <ul style="list-style:none;padding:0;margin:0;"><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#189; cup</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">basmati or long-grain white rice</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#189; cup</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">full-fat coconut milk</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#188; cup</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">water</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#190; tsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">granulated sugar</span></li><li class="ing-list" style="display:-webkit-flex;display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #D9C9A8;font-size:13px;line-height:1.4;background-color:#F4EFE4;list-style:none;"><span class="ing-amount" style="-webkit-flex-shrink:0;flex-shrink:0;width:60px;font-weight:600;color:#2D6A4F;font-size:13px;font-family:Lora,Georgia,serif;">&#188; tsp</span><span style="color:#1C1209;font-family:Lora,Georgia,serif;">kosher salt</span></li></ul>
-    </div>
-    <div class="sub-steps-col">
-      <span class="sub-section-label">Instructions</span>
-      <ol style="list-style:none;padding:0;margin:0;"><li class="sub-step"><div class="sub-step-num">1</div><div class="sub-step-text">Combine all ingredients in a small saucepan, bring to a boil over high heat.</div></li><li class="sub-step"><div class="sub-step-num">2</div><div class="sub-step-text">Stir once, reduce to a simmer, cover, and cook for 20&ndash;22 minutes.</div></li><li class="sub-step"><div class="sub-step-num">3</div><div class="sub-step-text">Turn off the heat and rest, covered, for 10 minutes before fluffing.</div></li></ol>
-
-```
-</div>
-```
-
   </div>
 </div>
 
-```
+<div class="section-label">Ingredients</div><ul class="ingredients" id="tlw-main"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Prep</div><p class="step-text">Prepare the Chili Crunch Chicken, Peanut Sauce, and Serrano Garlic Sauce using the recipes below.</p></div></li><li class="step"><span class="step-n">2</span><div><div class="step-title">Heat the chicken</div><p class="step-text">Heat neutral oil in a large skillet over high heat. Add the Chili Crunch Chicken and cook, stirring occasionally, until hot and slightly caramelized around the edges, about 4 minutes.</p></div></li><li class="step"><span class="step-n">3</span><div><div class="step-title">Prep the sauces</div><p class="step-text">Divide the Serrano Garlic Sauce between two ramekins and garnish with 2&ndash;3 slices of serrano. Whisk the Peanut Sauce with warm water until smooth, divide between two ramekins, and garnish with half the chopped peanuts.</p></div></li><li class="step"><span class="step-n">4</span><div><div class="step-title">Plate</div><p class="step-text">Arrange the butter lettuce, carrots, cucumber, cilantro, and scallions on two plates. Arrange the chicken alongside and garnish with the remaining peanuts. Serve with both dipping sauces.</p></div></li></ol><div class="notes"><div class="note"><strong>To eat</strong>Spoon the chicken into a lettuce leaf and top with vegetables, peanuts, and sauces.</div><div class="note"><strong>Optional</strong>For a more filling meal, serve with Coconut Rice on the side (recipe below).</div></div><div class="sub-section"><p class="sub-title">Chili Crunch Chicken</p><span class="sub-yield">makes 2 cups &mdash; enough for this recipe</span><div class="section-label">Ingredients</div><ul class="ingredients" id="tlw-chicken"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Mix</div><p class="step-text">In a medium bowl, combine all ingredients and mix until smooth.</p></div></li><li class="step"><span class="step-n">2</span><div><div class="step-title">Cook</div><p class="step-text">Heat neutral oil in a large skillet over medium-high heat. Add the chicken mixture and cook, undisturbed, for 4&ndash;5 minutes until caramelized around the edges. Break up the meat with a spatula, scraping the bottom of the pan, and cook until done, another 5&ndash;6 minutes.</p></div></li></ol><div class="notes"><div class="note"><strong>Store</strong>Cool completely before storing in an airtight container. Reheat in a hot skillet.</div></div></div><div class="sub-section"><p class="sub-title">Peanut Sauce</p><span class="sub-yield">makes &frac14; cup &mdash; enough for this recipe</span><div class="section-label">Ingredients</div><ul class="ingredients" id="tlw-peanut"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Mix</div><p class="step-text">Add all ingredients to a small bowl and whisk until thoroughly combined.</p></div></li></ol><div class="notes"><div class="note"><strong>Store</strong>Refrigerate in an airtight container for up to 5 days.</div></div></div><div class="sub-section"><p class="sub-title">Serrano Garlic Sauce</p><span class="sub-yield">makes ~&frac13; cup &mdash; enough for this recipe</span><div class="section-label">Ingredients</div><ul class="ingredients" id="tlw-serrano"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Blend</div><p class="step-text">Using a blender or immersion blender, blend all ingredients until mostly smooth.</p></div></li></ol><div class="notes"><div class="note"><strong>Store</strong>Refrigerate in an airtight container.</div></div></div><div class="sub-section"><p class="sub-title">Coconut Rice</p><span class="sub-yield">makes ~1 cup &mdash; optional</span><div class="section-label">Ingredients</div><ul class="ingredients" id="tlw-rice"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Boil</div><p class="step-text">Combine all ingredients in a small saucepan and bring to a boil over high heat.</p></div></li><li class="step"><span class="step-n">2</span><div><div class="step-title">Simmer</div><p class="step-text">Stir once, reduce to a simmer, cover, and cook for 20&ndash;22 minutes.</p></div></li><li class="step"><span class="step-n">3</span><div><div class="step-title">Rest</div><p class="step-text">Turn off the heat and rest, covered, for 10 minutes before fluffing.</p></div></li></ol></div>
+
 <div class="footer">Restaurant Dropout &middot; Week 109 &middot; Thai Lettuce Wraps</div>
-```
-
-  </div>
-</div>
 
 <script>
 var BASE = 2;
 var servings = BASE;
-var MAIN_INGS = [
-  [1,"tbsp","neutral oil",false],
-  [2,"cups","Chili Crunch Chicken (recipe below)",false],
-  [3,"tbsp","Serrano Garlic Sauce (recipe below)",false],
-  [0,"","serrano peppers, thinly sliced (garnish)",false],
-  [0.25,"cup","Peanut Sauce (recipe below)",false],
-  [1,"tbsp","warm water",false],
-  [0.25,"cup","salted peanuts, chopped, divided",false],
-  [13,"","butter lettuce leaves",false],
-  [0.5,"cup","julienned carrots",false],
-  [0.25,"cup","English cucumber, thinly sliced",false],
-  [0.25,"cup","cilantro, tightly packed",false],
-  [0.25,"cup","scallions, thinly sliced",false],
-  [1,"cup","Coconut Rice, warmed (optional)",true]
-];
+var INGREDIENTS = {
+  "tlw-main": [
+    [1,"tbsp","neutral oil",false],
+    [2,"cups","Chili Crunch Chicken (recipe below)",false],
+    [3,"tbsp","Serrano Garlic Sauce (recipe below)",false],
+    [0,"","serrano peppers, thinly sliced (garnish)",false],
+    [0.25,"cup","Peanut Sauce (recipe below)",false],
+    [1,"tbsp","warm water",false],
+    [0.25,"cup","salted peanuts, chopped, divided",false],
+    [13,"","butter lettuce leaves",false],
+    [0.5,"cup","julienned carrots",false],
+    [0.25,"cup","English cucumber, thinly sliced",false],
+    [0.25,"cup","cilantro, tightly packed",false],
+    [0.25,"cup","scallions, thinly sliced",false],
+    [1,"cup","Coconut Rice, warmed (optional)",true]
+  ],
+  "tlw-chicken": [
+    [1,"lb","ground chicken",false],
+    [0.5,"","shallot, minced",false],
+    [2,"cloves","garlic, minced",false],
+    [0,"","&frac12;-inch knob ginger, minced",false],
+    [0.5,"bunch","scallion whites, thinly sliced",false],
+    [2,"tbsp","oyster sauce",false],
+    [1.5,"tbsp","soy sauce",false],
+    [0.5,"tbsp","toasted sesame oil",false],
+    [2,"tbsp","chili crunch",false],
+    [0,"","neutral oil, for cooking",false]
+  ],
+  "tlw-peanut": [
+    [2,"tbsp","salted peanut butter",false],
+    [1.5,"tsp","brown sugar",false],
+    [1.5,"tsp","soy sauce",false],
+    [0.25,"tsp","toasted sesame oil",false],
+    [0,"","juice of &frac14; lime",false],
+    [1,"clove","garlic, grated",false],
+    [0,"","small knob of ginger, grated",false],
+    [1,"tbsp","hot water",false],
+    [0,"","pinch of kosher salt",false]
+  ],
+  "tlw-serrano": [
+    [0,"","juice of 2 limes",false],
+    [3,"cloves","garlic",false],
+    [1,"","serrano pepper, roughly chopped",false],
+    [2,"tbsp","fish sauce",false],
+    [2,"tbsp","brown sugar",false]
+  ],
+  "tlw-rice": [
+    [0.5,"cup","basmati or long-grain white rice",false],
+    [0.5,"cup","full-fat coconut milk",false],
+    [0.25,"cup","water",false],
+    [0.75,"tsp","granulated sugar",false],
+    [0.25,"tsp","kosher salt",false]
+  ]
+};
 
-function fmt(n) {
+function fmt(base) {
+  var n = (base / BASE) * servings;
   if (n === 0) return '';
   var fracs = [
     [0.125,'&#8539;'],[0.25,'&#188;'],[0.333,'&#8531;'],[0.375,'&#8540;'],
@@ -294,38 +355,35 @@ function fmt(n) {
   ];
   var whole = Math.floor(n);
   var rem = Math.round((n - whole) * 1000) / 1000;
-  var frac = '';
   for (var i = 0; i < fracs.length; i++) {
-    if (Math.abs(rem - fracs[i][0]) < 0.04) { frac = fracs[i][1]; break; }
+    if (Math.abs(rem - fracs[i][0]) < 0.04) {
+      return (whole > 0 ? whole : '') + fracs[i][1];
+    }
   }
-  if (frac) return (whole > 0 ? whole : '') + frac;
   if (rem === 0) return String(whole);
   return String(Math.round(n * 10) / 10);
 }
 
-function renderList(ings, elId) {
-  var ratio = servings / BASE;
-  var html = '';
-  for (var i = 0; i < ings.length; i++) {
-    var ing = ings[i];
-    var amt = ing[0], unit = ing[1], name = ing[2], opt = ing[3] || false;
-    var scaled = (amt === 0) ? 0 : amt * ratio;
-    var amtStr = (scaled === 0) ? '' : fmt(scaled);
-    var unitStr = unit ? ' ' + unit : '';
-    var display = amtStr ? amtStr + unitStr : '&mdash;';
-    html += '<li><span class="ing-amount">' + display + '</span>';
-    html += '<span class="ing-name' + (opt ? ' ing-optional' : '') + '">' + name + (opt ? ' *' : '') + '</span></li>';
-  }
-  document.getElementById(elId).innerHTML = html;
-}
-
 function render() {
-  renderList(MAIN_INGS, 'main-ings');
+  for (var listId in INGREDIENTS) {
+    var ings = INGREDIENTS[listId];
+    var el = document.getElementById(listId);
+    if (!el) continue;
+    var html = '';
+    for (var i = 0; i < ings.length; i++) {
+      var row = ings[i];
+      var amt = row[0], unit = row[1], name = row[2], opt = row[3] || false;
+      var display = amt === 0 ? 'to taste' : fmt(amt) + (unit ? ' ' + unit : '');
+      html += '<li><span class="amt">' + display + '</span>';
+      html += '<span class="' + (opt ? 'ing-optional' : '') + '">' + name + '</span></li>';
+    }
+    el.innerHTML = html;
+  }
   document.getElementById('serving-count').textContent = servings;
 }
 
-document.getElementById('btn-up').addEventListener('click', function() { if (servings < 20) { servings++; render(); } });
-document.getElementById('btn-down').addEventListener('click', function() { if (servings > 1) { servings--; render(); } });
+document.getElementById('btn-up').onclick = function() { if (servings < 20) { servings++; render(); } };
+document.getElementById('btn-down').onclick = function() { if (servings > 1) { servings--; render(); } };
 render();
 </script>
 
