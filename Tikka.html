@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Chicken Tikka Masala</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #F2EBD9;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  color: #2C1A0E;
+  padding: 0 20px 60px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+.topbar {
+  height: 6px;
+  background: linear-gradient(90deg, #5C3317, #8B1A1A, #5C3317);
+  margin: 0 -20px 36px;
+}
+.header {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #D4B896;
+  margin-bottom: 24px;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8B1A1A;
+  margin-bottom: 10px;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+h1 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 7vw, 40px);
+  line-height: 1.15;
+  color: #2C1A0E;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-style: italic;
+  font-size: 16px;
+  color: #8C7055;
+  margin-bottom: 20px;
+  font-family: 'Lora', Georgia, serif;
+}
+.divider {
+  color: #D4B896;
+  font-size: 18px;
+  letter-spacing: 8px;
+  margin-bottom: 18px;
+  display: block;
+}
+.meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.meta-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8C7055;
+  font-family: 'Lora', Georgia, serif;
+}
+.meta-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #5C3317;
+  font-family: 'Lora', Georgia, serif;
+}
+.meta-divider {
+  width: 1px;
+  height: 28px;
+  background: #D4B896;
+}
+.serving-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid #8B1A1A;
+  background: #F2EBD9;
+  font-size: 20px;
+  color: #8B1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1;
+  padding: 0;
+  font-family: Georgia, serif;
+  touch-action: manipulation;
+}
+.btn:active {
+  background: #8B1A1A;
+  color: #F2EBD9;
+}
+#serving-count {
+  font-size: 26px;
+  font-weight: 700;
+  color: #8B1A1A;
+  min-width: 36px;
+  text-align: center;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8B1A1A;
+  margin-bottom: 14px;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lora', Georgia, serif;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #D4B896;
+}
+.ing-group-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #A3845A;
+  margin: 14px 0 6px;
+  display: block;
+  font-family: 'Lora', Georgia, serif;
+}
+.ing-group-label:first-child { margin-top: 0; }
+.ingredients {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.ingredients li {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(212,184,150,0.35);
+  font-size: 15px;
+  line-height: 1.4;
+  color: #2C1A0E;
+}
+.ingredients li:last-child { border-bottom: none; }
+.amt {
+  font-weight: 700;
+  color: #8B1A1A;
+  min-width: 60px;
+  flex-shrink: 0;
+  font-family: 'Lora', Georgia, serif;
+}
+.ing-optional { color: #8C7055; font-style: italic; }
+.steps { list-style: none; margin-bottom: 8px; }
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.step-n {
+  font-size: 20px;
+  font-weight: 700;
+  color: #8B1A1A;
+  opacity: 0.6;
+  min-width: 22px;
+  padding-top: 1px;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.step-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #5C3317;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Lora', Georgia, serif;
+}
+.step-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #2C1A0E;
+  font-family: 'Lora', Georgia, serif;
+}
+.notes { margin-bottom: 8px; }
+.note {
+  border-left: 2px solid #D4B896;
+  padding-left: 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #8C7055;
+  font-family: 'Lora', Georgia, serif;
+}
+.note strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5C3317;
+  margin-bottom: 3px;
+  font-family: 'Lora', Georgia, serif;
+}
+/* Sub-recipe sections */
+.sub-section {
+  margin-top: 8px;
+  padding-top: 4px;
+}
+.sub-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C1A0E;
+  margin-bottom: 2px;
+}
+.sub-yield {
+  font-size: 12px;
+  color: #8C7055;
+  font-style: italic;
+  font-family: 'Lora', Georgia, serif;
+  margin-bottom: 12px;
+  display: block;
+}
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #D4B896;
+  font-size: 11px;
+  color: #D4B896;
+  letter-spacing: 0.1em;
+  font-family: 'Lora', Georgia, serif;
+}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+
+<div class="header">
+  <span class="eyebrow">Cafe Delites &middot; Karina Carrel</span>
+  <h1>Chicken Tikka Masala</h1>
+  <p class="subtitle">one-pan creamy tomato curry with spiced golden chicken</p>
+  <span class="divider">&#8212; &nbsp; &#8212; &nbsp; &#8212;</span>
+  <div class="meta-bar">
+    <div class="meta-item">
+      <span class="meta-label">Serves</span>
+      <div class="serving-row">
+        <button class="btn" id="btn-down" aria-label="decrease">&#8722;</button>
+        <span id="serving-count">5</span>
+        <button class="btn" id="btn-up" aria-label="increase">&#43;</button>
+      </div>
+      <span class="meta-label">people</span>
+    </div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">
+      <span class="meta-label">Prep</span>
+      <span class="meta-value">15 min</span>
+    </div><div class="meta-divider"></div>
+    <div class="meta-item">
+      <span class="meta-label">Cook</span>
+      <span class="meta-value">30 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Ingredients</div><span class="ing-group-label">Chicken Marinade</span><ul class="ingredients" id="ctm-marinade"></ul><span class="ing-group-label">Sauce</span><ul class="ingredients" id="ctm-sauce"></ul><div class="section-label">Instructions</div><ol class="steps"><li class="step"><span class="step-n">1</span><div><div class="step-title">Marinate</div><p class="step-text">In a bowl, combine the chicken with all marinade ingredients. Mix well, cover, and marinate for at least 10 minutes &mdash; or up to overnight for deeper flavor.</p></div></li><li class="step"><span class="step-n">2</span><div><div class="step-title">Sear the chicken</div><p class="step-text">Heat oil in a large skillet or pot over medium-high heat. When sizzling, sear the marinated chicken in batches of 2&ndash;3, without crowding the pan, for 3 minutes per side until browned. Transfer to a plate and keep warm. The chicken will finish cooking in the sauce.</p></div></li><li class="step"><span class="step-n">3</span><div><div class="step-title">Saut&eacute; onions</div><p class="step-text">Melt the butter in the same pan. Saut&eacute; the onions until soft, about 3 minutes, scraping up any browned bits from the bottom of the pan.</p></div></li><li class="step"><span class="step-n">4</span><div><div class="step-title">Spices</div><p class="step-text">Add the garlic and ginger and cook for 1 minute until fragrant. Add the garam masala, cumin, turmeric, and coriander and fry for about 20 seconds, stirring constantly.</p></div></li><li class="step"><span class="step-n">5</span><div><div class="step-title">Build the sauce</div><p class="step-text">Pour in the tomato pure&eacute;, chili powders, and salt. Simmer for 10&ndash;15 minutes, stirring occasionally, until the sauce thickens and turns a deep red-brown color.</p></div></li><li class="step"><span class="step-n">6</span><div><div class="step-title">Finish</div><p class="step-text">Stir the cream and brown sugar through the sauce. Add the seared chicken and its juices back into the pan. Cook for an additional 8&ndash;10 minutes until the chicken is cooked through and the sauce is thick and bubbling. Add a splash of water to thin if needed.</p></div></li><li class="step"><span class="step-n">7</span><div><div class="step-title">Serve</div><p class="step-text">Taste and adjust seasoning. Garnish with fresh cilantro and serve hot with basmati rice and naan.</p></div></li></ol><div class="notes"><div class="note"><strong>Sear in batches</strong>Don't crowd the pan or the chicken will steam instead of brown. This is the key to a smoky, caramelized crust.</div><div class="note"><strong>Spice level</strong>Kashmiri chili adds color with mild heat. Reduce or omit the red chili powder for a gentler dish; add more cream or a pinch of sugar to mellow if needed.</div><div class="note"><strong>Marinate overnight</strong>Even 10 minutes works, but overnight transforms the chicken's texture and depth of flavor.</div><div class="note"><strong>Lower calorie swap</strong>Substitute evaporated milk for the heavy cream.</div></div>
+
+<div class="footer">Recipe by Karina Carrel &middot; cafedelites.com &middot; Chicken Tikka Masala</div>
+
+<script>
+var BASE = 5;
+var servings = BASE;
+var INGREDIENTS = {
+  "ctm-marinade": [
+    [28,"oz","boneless skinless chicken thighs, bite-sized pieces",false],
+    [1,"cup","plain yogurt",false],
+    [1.5,"tbsp","garlic, minced",false],
+    [1,"tbsp","fresh ginger, minced",false],
+    [2,"tsp","garam masala",false],
+    [1,"tsp","turmeric",false],
+    [1,"tsp","ground cumin",false],
+    [1,"tsp","Kashmiri chili (or &frac12; tsp red chili powder)",false],
+    [1,"tsp","salt",false]
+  ],
+  "ctm-sauce": [
+    [2,"tbsp","vegetable or canola oil",false],
+    [2,"tbsp","butter",false],
+    [2,"","small onions, finely diced",false],
+    [1.5,"tbsp","garlic, finely grated",false],
+    [1,"tbsp","fresh ginger, finely grated",false],
+    [1.5,"tsp","garam masala",false],
+    [1.5,"tsp","ground cumin",false],
+    [1,"tsp","turmeric powder",false],
+    [1,"tsp","ground coriander",false],
+    [14,"oz","tomato pure&eacute; (passata)",false],
+    [1,"tsp","Kashmiri chili (optional, for color)",true],
+    [1,"tsp","red chili powder, to taste",false],
+    [1,"tsp","salt",false],
+    [1.25,"cups","heavy cream (or evaporated milk)",false],
+    [1,"tsp","brown sugar",false],
+    [0.25,"cup","water, if needed",true],
+    [4,"tbsp","fresh cilantro, to garnish",false]
+  ]
+};
+
+function fmt(base) {
+  var n = (base / BASE) * servings;
+  if (n === 0) return '';
+  var fracs = [
+    [0.125,'&#8539;'],[0.25,'&#188;'],[0.333,'&#8531;'],[0.375,'&#8540;'],
+    [0.5,'&#189;'],[0.667,'&#8532;'],[0.75,'&#190;'],[0.875,'&#8542;']
+  ];
+  var whole = Math.floor(n);
+  var rem = Math.round((n - whole) * 1000) / 1000;
+  for (var i = 0; i < fracs.length; i++) {
+    if (Math.abs(rem - fracs[i][0]) < 0.04) {
+      return (whole > 0 ? whole : '') + fracs[i][1];
+    }
+  }
+  if (rem === 0) return String(whole);
+  return String(Math.round(n * 10) / 10);
+}
+
+function render() {
+  for (var listId in INGREDIENTS) {
+    var ings = INGREDIENTS[listId];
+    var el = document.getElementById(listId);
+    if (!el) continue;
+    var html = '';
+    for (var i = 0; i < ings.length; i++) {
+      var row = ings[i];
+      var amt = row[0], unit = row[1], name = row[2], opt = row[3] || false;
+      var display = amt === 0 ? 'to taste' : fmt(amt) + (unit ? ' ' + unit : '');
+      html += '<li><span class="amt">' + display + '</span>';
+      html += '<span class="' + (opt ? 'ing-optional' : '') + '">' + name + '</span></li>';
+    }
+    el.innerHTML = html;
+  }
+  document.getElementById('serving-count').textContent = servings;
+}
+
+document.getElementById('btn-up').onclick = function() { if (servings < 20) { servings++; render(); } };
+document.getElementById('btn-down').onclick = function() { if (servings > 1) { servings--; render(); } };
+render();
+</script>
+
+</body>
+</html>
