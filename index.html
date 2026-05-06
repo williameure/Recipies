@@ -58,9 +58,8 @@ font-size: 14px;
 letter-spacing: 10px;
 }
 
-/* Sections */
 .section {
-padding: 0 20px 40px;
+padding: 0 20px 16px;
 }
 
 .section-header {
@@ -68,6 +67,7 @@ display: flex;
 align-items: center;
 gap: 12px;
 margin-bottom: 16px;
+margin-top: 28px;
 }
 
 .section-title {
@@ -85,7 +85,15 @@ height: 1px;
 background: #D4B896;
 }
 
-/* Cards */
+.section-byline {
+font-size: 10px;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #B09070;
+white-space: nowrap;
+flex-shrink: 0;
+}
+
 .recipe-card {
 display: block;
 text-decoration: none;
@@ -162,12 +170,12 @@ color: #D4B896;
 
 .footer {
 text-align: center;
-padding: 20px;
+padding: 24px 20px;
 border-top: 1px solid #D4B896;
 font-size: 11px;
 color: #D4B896;
 letter-spacing: 0.1em;
-margin-top: 10px;
+margin-top: 24px;
 }
 </style>
 
@@ -185,6 +193,8 @@ margin-top: 10px;
 
 <div class="section">
 
+  <!-- PASTA -->
+
   <div class="section-header">
     <span class="section-title">Pasta</span>
     <div class="section-rule"></div>
@@ -196,23 +206,16 @@ margin-top: 10px;
     <div class="card-title">Paulie's-Style Rigatoni Bolognese</div>
     <p class="card-desc">A faithful recreation of the Montrose classic — beef & veal in a light, creamy tomato sauce.</p>
     <div class="card-meta">
-      <div>
-        <span class="meta-label">Time</span>
-        <span class="meta-value">2.5 hrs</span>
-      </div>
-      <div>
-        <span class="meta-label">Serves</span>
-        <span class="meta-value">4</span>
-      </div>
-      <div>
-        <span class="meta-label">Difficulty</span>
-        <span class="meta-value">Medium</span>
-      </div>
+      <div><span class="meta-label">Time</span><span class="meta-value">2.5 hrs</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Medium</span></div>
     </div>
     <span class="card-arrow">&#8594;</span>
   </a>
 
-  <div class="section-header" style="margin-top: 28px;">
+  <!-- CHICKEN -->
+
+  <div class="section-header">
     <span class="section-title">Chicken</span>
     <div class="section-rule"></div>
   </div>
@@ -223,18 +226,81 @@ margin-top: 10px;
     <div class="card-title">The Best Korean Fried Chicken at Home</div>
     <p class="card-desc">Double-fried for maximum crunch, glazed in a sticky gochujang sauce. Joshua Weissman's recipe.</p>
     <div class="card-meta">
-      <div>
-        <span class="meta-label">Time</span>
-        <span class="meta-value">1.5 hrs</span>
-      </div>
-      <div>
-        <span class="meta-label">Serves</span>
-        <span class="meta-value">4</span>
-      </div>
-      <div>
-        <span class="meta-label">Difficulty</span>
-        <span class="meta-value">Medium</span>
-      </div>
+      <div><span class="meta-label">Time</span><span class="meta-value">1.5 hrs</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Medium</span></div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
+
+  <!-- RECIPES BY ZOE BARRIE -->
+
+  <div class="section-header">
+    <span class="section-title">Recipes by Zoe Barrie</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <a class="recipe-card" href="ThaiLettuceWraps.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Thai &bull; Light &bull; Fresh</span>
+    <div class="card-title">Thai Lettuce Wraps</div>
+    <p class="card-desc">Chili crunch chicken and coconut rice tucked into crisp butter lettuce, finished with peanut sauce.</p>
+    <div class="card-meta">
+      <div><span class="meta-label">Time</span><span class="meta-value">30 min</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Easy</span></div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
+
+  <a class="recipe-card" href="PeanutCrunchNoodles.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Thai &bull; Noodles &bull; Vegetarian Option</span>
+    <div class="card-title">Peanut Crunch Noodles</div>
+    <p class="card-desc">Rice noodles tossed in a bold peanut sauce with crispy chili chicken and crunchy toppings.</p>
+    <div class="card-meta">
+      <div><span class="meta-label">Time</span><span class="meta-value">25 min</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Easy</span></div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
+
+  <a class="recipe-card" href="SesameChicken.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Thai &bull; Bowl &bull; Meal Prep</span>
+    <div class="card-title">Crispy Sesame Chicken Bowls</div>
+    <p class="card-desc">Spicy soy-marinated chicken over coconut rice with a sesame-scallion finish.</p>
+    <div class="card-meta">
+      <div><span class="meta-label">Time</span><span class="meta-value">35 min</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Easy</span></div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
+
+  <a class="recipe-card" href="ThaiPizza.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Thai &bull; Pizza &bull; Fusion</span>
+    <div class="card-title">Thai Chicken Pizza</div>
+    <p class="card-desc">Peanut sauce base, chili crunch chicken, mozzarella, and a serrano garlic drizzle.</p>
+    <div class="card-meta">
+      <div><span class="meta-label">Time</span><span class="meta-value">40 min</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Medium</span></div>
+    </div>
+    <span class="card-arrow">&#8594;</span>
+  </a>
+
+  <a class="recipe-card" href="ChickenSatay.html">
+    <div class="card-stripe"></div>
+    <span class="card-tag">Thai &bull; Salad &bull; Light</span>
+    <div class="card-title">Chicken Satay Salad</div>
+    <p class="card-desc">Crispy coconut rice, satay-style chicken, and a bright peanut-lime dressing over fresh greens.</p>
+    <div class="card-meta">
+      <div><span class="meta-label">Time</span><span class="meta-value">30 min</span></div>
+      <div><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div><span class="meta-label">Difficulty</span><span class="meta-value">Easy</span></div>
     </div>
     <span class="card-arrow">&#8594;</span>
   </a>
